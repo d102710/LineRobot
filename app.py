@@ -61,7 +61,7 @@ def handle_message(event):
     got_text=event.message.text
 
     if str(got_text)=='你好':
-        got_text='有事嗎你？'
+        got_text='哈囉 需要幫忙嗎？'
 
 
     line_bot_api.reply_message(
