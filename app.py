@@ -3,11 +3,9 @@
 """  
 @desc:  
 @author: LIN,WEI-LI
-@software: PyCharm
 """
 
-import os
-import requests
+import configparser
 from flask import Flask, request, abort
 
 from linebot import (
@@ -22,16 +20,18 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-ACCESS_TOKEN = 'znOzkGEVO4xe8HSQThRXHKDYxJj1Xgial9nf2cBS1ZEgscTKGQN7sYrlfAxJXwqs1fAcypDfL/mQtLpsf+St+9OLFQTLMp6UUvRFsU06B+GtBQ4ViVaNhdXcOXHwzEIwPoz5S6A/8NgqFlIjsoOdPQdB04t89/1O/w1cDnyilFU='
-SECRET = '122dfcdf84786ab8d0e2842f4826119e'
+config = configparser.ConfigParser()
+config.read( "ConfigParser.ini")
+ACCESS_TOKEN=config.app['ACCESS_TOKEN']
+SECRET=config.app['SECRET']
 
 line_bot_api = LineBotApi(str(ACCESS_TOKEN))
 handler = WebhookHandler(str(SECRET))
 
+
+
 @app.route("/",)
 def sayHello():
-
-
     return 'Hello World'
 
 
